@@ -17,6 +17,12 @@ class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         asyncio.create_task(self.messageLoop())
         await self.highrise.walk_to(Position(6,2.5,0,"FrontRight"))
+    async def run(self, room_id, token):
+        await __main__.main(self, room_id, token)
+if _name_ == "__main__":
+    room_id = ""
+    token = ""
+    arun(bot().run(room_id, token))
         pass
     async def on_user_join(self, user: User) -> None:
         await self.highrise.chat(f"نورت مزاد النخبه 💸 {user.username}")
