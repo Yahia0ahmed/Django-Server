@@ -1,6 +1,8 @@
 import time
 import asyncio
 from highrise import BaseBot
+from highrise import __main__
+from asyncio import run as arun
 from highrise.models import SessionMetadata, User, Item, GetWalletRequest, Error, Position, ChatRequest, Reaction, EmoteRequest
 class Bot(BaseBot):
     async def messageLoop(self):
@@ -19,11 +21,12 @@ class Bot(BaseBot):
         await self.highrise.walk_to(Position(6,2.5,0,"FrontRight"))
     async def run(self, room_id, token):
         await __main__.main(self, room_id, token)
-if _name_ == "__main__":
-    room_id = ""
-    token = ""
-    arun(bot().run(room_id, token))
-        pass
+
+if __name__ == "__main__":
+    room_id = "641b53aa36db7b20954ab390"
+    token = "5f1712fb1c32fd4fb19edbf4963ac1e5b7b38dedae89d4f421631b1aba6131f4"
+    arun(Bot().run(room_id, token))
+    pass
     async def on_user_join(self, user: User) -> None:
         await self.highrise.chat(f"نورت مزاد النخبه 💸 {user.username}")
         msg = f"[joined🟢]: {user.username}"
